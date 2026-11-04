@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 from app.config import PROJECT_ROOT, settings
 from app.mdns import start_mdns, stop_mdns
-from app.routers import power
+from app.routers import power, sensors
 from app.services.power import detect_os
 
 
@@ -26,6 +26,7 @@ app = FastAPI(
 )
 
 app.include_router(power.router)
+app.include_router(sensors.router)
 
 
 @app.get("/health")
